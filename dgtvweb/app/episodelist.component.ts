@@ -61,7 +61,9 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
       }
       else {
         console.log("CALL GETEPISODES");
-        this.episodeService.getEpisodes();
+        this.episodeService.getEpisodes().subscribe((data)=> {
+          this.episodes = data;
+        }) ;
         // this.episodeService.getEpisodes();
       }
 

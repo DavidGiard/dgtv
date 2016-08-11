@@ -4,6 +4,7 @@ import {IEpisode} from './IEpisode';
 
 import { Headers, Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { Observer }     from 'rxjs/Observer';
 // import 'rxjs/add/operator/toPromise';
 
 //import 'rxjs/add/observable';
@@ -37,37 +38,20 @@ export class EpisodeService implements OnInit {
         return Promise.resolve(episodesList);
     }
 
-    /*
-    getHeroes (): Observable<Hero[]> {
-      return this.http.get(this.heroesUrl)
-                      .map(this.extractData)
-                      .catch(this.handleError);
-    }
-    private extractData(res: Response) {
-      let body = res.json();
-      return body.data || { };
-    }
-    
-    private handleError (error: any) {
-      // In a real world app, we might use a remote logging infrastructure
-      // We'd also dig deeper into the error to get a better message
-      let errMsg = (error.message) ? error.message :
-        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-      console.error(errMsg); // log to console instead
-      return Observable.throw(errMsg);
-    }
-    
-    */
-    getEpisodes() {
+    getEpisodes(): Observable<IEpisode[]> {
         console.log("SERVICE getEpisodes");
 
-        return this.http.get(this.episodessUrl)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return Observable.create((observer: Observer<any>) => {
+
+            this.http.get(this.episodessUrl)
+            .subscribe(
+                response => {
+                this.episodes = response.json();
+                observer.next(this.episodes);
+                })
 
 
-        // return this.http.get(this.episodessUrl)
-        //     .subscribe(response => this.episodes = response.json())
+        })
 
         // .toPromise()
         // .then(response => response.json())
