@@ -13,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EpisodeListComponent implements OnInit, OnDestroy {
   episodes: IEpisode[];
   sub: any;
+  errorMessage: string;
+  mode = 'Observable';
 
   constructor(
     private episodeService: EpisodeService,
@@ -23,7 +25,14 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
 
 
   getEpisodes() {
-    this.episodes = this.episodeService.episodes;
+
+      this.episodeService.getEpisodes()
+                   .subscribe(
+                     episodes => this.episodes = episodes,
+                     error =>  this.errorMessage = <any>error);
+
+    //this.episodes = this.episodeService.episodes;
+
     // this.episodeService.getEpisodes().then(episodes => this.episodes = episodes);
   }
 
@@ -56,7 +65,7 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
         // this.episodeService.getEpisodes();
       }
 
-      this.episodes = this.episodeService.episodes;
+      //this.episodes = this.episodeService.episodes;
     });
   }
 
