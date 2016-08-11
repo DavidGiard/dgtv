@@ -44,10 +44,10 @@ export class EpisodeService implements OnInit {
         return Observable.create((observer: Observer<any>) => {
 
             this.http.get(this.episodessUrl)
-            .subscribe(
+                .subscribe(
                 response => {
-                this.episodes = response.json();
-                observer.next(this.episodes);
+                    this.episodes = response.json();
+                    observer.next(this.episodes);
                 })
 
 
@@ -79,9 +79,9 @@ export class EpisodeService implements OnInit {
     }
 
 
-    getEpisodesForGuest(guest: string) {
+    getEpisodesForGuest(guest: string, allEpisodes: IEpisode[]) {
 
-        return this.episodes.filter(
+        return allEpisodes.filter(
             function (ep: IEpisode, index: number, array: IEpisode[]) {
                 let found = false;
                 for (var index = 0; index < ep.guests.length; index++) {
@@ -95,60 +95,67 @@ export class EpisodeService implements OnInit {
             }
         )
 
-        // .then(episodes => episodes.filter(
+    }
+
+
+    getEpisodesForLocation(location: string, allEpisodes: IEpisode[]) {
+
+        location = encodeURI(location.toUpperCase());
+        return allEpisodes.filter(episode => (encodeURI(episode.location).toUpperCase()) === location);
+        
+        // return allEpisodes.filter(
         //     function (ep: IEpisode, index: number, array: IEpisode[]) {
-        //         let found = false;
-        //         for (var index = 0; index < ep.guests.length; index++) {
-        //             var thisGuest = ep.guests[index];
-        //             // thisGuest = thisGuest;
-        //             if (encodeURI(thisGuest).toUpperCase() === encodeURI(guest).toUpperCase()) {
-        //                 found = true;
-        //             }
+        //         location = encodeURI(location.toUpperCase());
+        //         var thisLocation = ep.location;
+        //         if (encodeURI(thisLocation).toUpperCase() === location) {
+        //             return true;
+        //         }
+        //         else {
+        //             return false;
         //         }
 
-        //         return found;
         //     }
         // ))
+
     }
 
 
-    getEpisodesForLocation(location: string) {
-        // location = encodeURI(location.toUpperCase())
-        // return this.getEpisodes()
-        //     .then(episodes => episodes.filter(
+    // location = encodeURI(location.toUpperCase())
+    // return this.getEpisodes()
+    //     .then(episodes => episodes.filter(
 
-        //         function (ep: IEpisode, index: number, array: IEpisode[]) {
-        //             var thisLocation = ep.location;
-        //             if (encodeURI(thisLocation).toUpperCase() === location) {
-        //                 return true;
-        //             }
-        //             else {
-        //                 return false;
-        //             }
+    //         function (ep: IEpisode, index: number, array: IEpisode[]) {
+    //             var thisLocation = ep.location;
+    //             if (encodeURI(thisLocation).toUpperCase() === location) {
+    //                 return true;
+    //             }
+    //             else {
+    //                 return false;
+    //             }
 
-        //         }
-        //     ))
-
+    //         }
+    //     ))
 
 
-        // return this.getEpisodes()
-        //     .then(episodes => episodes.filter(episode => (encodeURI(episode.location).toUpperCase()) === location));
 
-        // return this.getEpisodes()
-        //     .then(episodes => episodes.filter(
-        //         function (ep: IEpisode, index: number, array: IEpisode[]) {
-        //             let found = false;
-        //             for (var index = 0; index < ep.locations.length; index++) {
-        //                 var thislocation = ep.locations[index];
-        //                 thislocation = thislocation;
-        //                 if (encodeURI(thislocation).toUpperCase() == encodeURI(location).toUpperCase()){
-        //                     found = true;
-        //                 }
-        //             }
+    // return this.getEpisodes()
+    //     .then(episodes => episodes.filter(episode => (encodeURI(episode.location).toUpperCase()) === location));
 
-        //             return found;
-        //         }
-        //     ))
-    }
+    // return this.getEpisodes()
+    //     .then(episodes => episodes.filter(
+    //         function (ep: IEpisode, index: number, array: IEpisode[]) {
+    //             let found = false;
+    //             for (var index = 0; index < ep.locations.length; index++) {
+    //                 var thislocation = ep.locations[index];
+    //                 thislocation = thislocation;
+    //                 if (encodeURI(thislocation).toUpperCase() == encodeURI(location).toUpperCase()){
+    //                     found = true;
+    //                 }
+    //             }
+
+    //             return found;
+    //         }
+    //     ))
+}
 
 }
