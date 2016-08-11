@@ -12,16 +12,6 @@ namespace dgTvSvc.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
-
-            //var er = new dgTvSvc.data.EpisodeRepository();
-            //IEnumerable<Episode> results = er.GetAllEpisode();
-
-
-
-
-
-
             return View();
         }
     }
