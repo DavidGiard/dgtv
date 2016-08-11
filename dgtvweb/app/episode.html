@@ -1,0 +1,46 @@
+<div *ngIf="episode">
+  <div>
+    <a href="" (click)="goToDetails (episode)">
+    Episode {{episode.episodeNumber}}: {{episode.title}}
+  </a>
+
+  </div>
+  <div [innerHtml]="episode.description">
+
+  </div>
+  <div>
+    Recorded: {{episode.dateRecorded | date:'MMMM dd, yyyy'}} at 
+        <a href="" (click)="getAllEpisodesForLocation (episode.location)">
+    {{episode.location}}
+    </a>
+  </div>
+  <div *ngIf='episode.dateReleased' id="DateReleasedDiv">
+    Published: {{episode.dateReleased | date:'MMMM dd, yyyy'}}
+  </div>
+
+  <div id="Guests">
+    <div>
+      Guests:
+    </div>
+    <ul>
+      <li *ngFor="let guest of episode.guests">
+
+    <a href="" (click)="getAllEpisodesForGuest (guest)">
+        {{guest}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="LinksDiv" *ngIf="episode.links.length>0">
+    <div>
+      Links:
+    </div>
+    <ul>
+      <li *ngFor="let link of episode.links">
+        <a [href]="link.url" target="_blank">{{link.title}}</a>
+      </li>
+    </ul>
+  </div>
+  <div>
+    

@@ -1,0 +1,50 @@
+<div *ngIf="episodeDtl">
+  <h2>
+    Episode {{episodeDtl.episodeNumber}}: {{episodeDtl.title}}
+  </h2>
+  <div [innerHtml]="episodeDtl.description">
+
+  </div>
+  <div id="videoDiv">
+    <video controls [src]="episodeDtl.lowResVideo">
+    </video>
+  </div>
+
+  <div id="Guests">
+    <div>
+      Guests:
+    </div>
+    <ul>
+      <li *ngFor="let guest of episodeDtl.guests">
+        {{guest}}
+      </li>
+    </ul>
+  </div>
+
+  <div id="LinksDiv">
+    <div>
+      Links:
+    </div>
+    <ul>
+      <li *ngFor="let link of episodeDtl.links">
+        <a [href]="link.url" target="_blank">{{link.title}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    Recorded: {{episodeDtl.dateRecorded}} at {{episodeDtl.location}}
+  </div>
+  <div *ngIf='episodeDtl.dateReleased' id="DateReleasedDiv">
+    Published: {{episodeDtl.dateReleased}}
+  </div>
+
+  <div>
+    <a href="{{episodeDtl.videoUrl}}">
+    View on Channel 9
+  </a>
+  </div>
+  <div>
+    <button (click)="goBack()">Back</button>
+  </div>
+</div>

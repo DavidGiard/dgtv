@@ -1,0 +1,7 @@
+C:\development\dgtv\PopulateDb\PopulateDb\bin\Debug\PopulateDb.exe.config
+C:\development\dgtv\PopulateDb\bin\Debug\PopulateDb.exe.config
+C:\development\dgtv\PopulateDb\bin\Debug\PopulateDb.exe
+C:\development\dgtv\PopulateDb\bin\Debug\PopulateDb.pdb
+C:\development\dgtv\PopulateDb\obj\Debug\PopulateDb.csprojResolveAssemblyReference.cache
+C:\development\dgtv\PopulateDb\obj\Debug\PopulateDb.exe
+C:\development\dgtv\PopulateDb\obj\Debug\PopulateDb.pdb

@@ -1,0 +1,36 @@
+CREATE TABLE [dbo].[Episodes]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+	Title NVARCHAR (255) NOT NULL, 
+    Description TEXT NULL, 
+    DateRecorded DATETIME NOT NULL, 
+    DateReleased DATETIME NULL, 
+    Location NVARCHAR (255) NOT NULL, 
+    VideoUrl NVARCHAR (255) NULL, 
+    VideoPlayer NVARCHAR (255) NULL, 
+    LowResVideo NVARCHAR (255) NULL, 
+    HighResVideo NVARCHAR (255) NULL,
+	EpisodeNumber INT NOT NULL
+)
+
+CREATE TABLE [dbo].[Links]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+    Url NVARCHAR (255) NULL,
+    Title NVARCHAR (255) NULL
+)
+
+CREATE TABLE [dbo].[Guests]
+(
+	[Id] INT NOT NULL PRIMARY KEY,
+	FirstName NVARCHAR (255) NOT NULL, 
+	LastName NVARCHAR (255) NOT NULL
+)
+
+CREATE TABLE [dbo].[EpisodeGuests]
+(
+	[EpisodeId] INT NOT NULL,
+	[GuestId] INT NOT NULL
+)
+
+-- TODO: Add indexes and foreign keys
