@@ -1,0 +1,18 @@
+body { 
+  background-color: lightgrey;
+}
+
+.Header{
+  background-color: darkslategrey;
+      padding: 10px;
+}
+
+.footer{
+      background-color: darkslategrey;
+}
+
+.content{
+      background-color: white;
+      margin: 5px;
+    
+}
