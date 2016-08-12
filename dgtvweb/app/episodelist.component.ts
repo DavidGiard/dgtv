@@ -32,8 +32,6 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
       episodes => this.episodes = episodes,
       error => this.errorMessage = <any>error);
 
-    //this.episodes = this.episodeService.episodes;
-
     // this.episodeService.getEpisodes().then(episodes => this.episodes = episodes);
   }
 
@@ -63,11 +61,9 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
         this.allEpisodes = data;
 
         if (guest) {
-          // debugger;
           this.episodes = this.getEpisodesForGuest(guest);
         }
         else if (location) {
-          // debugger;
           this.episodes = this.getEpisodesForLocation(location);
         }
         else
@@ -76,24 +72,11 @@ export class EpisodeListComponent implements OnInit, OnDestroy {
         }
       });
 
-
-
-      // else {
-      //console.log("CALL GETEPISODES");
-      // this.episodeService.getEpisodes().subscribe((data)=> {
-      //   this.episodes = data;
-      //   this.allEpisodes = data;
-      // }) ;
-      // }
-
-      //this.episodes = this.episodeService.episodes;
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
-
 
 }
