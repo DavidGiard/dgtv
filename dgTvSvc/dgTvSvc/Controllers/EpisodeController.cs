@@ -24,6 +24,7 @@ namespace dgTvSvc.Controllers
         }
 
         // GET: api/Episode/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Get(int id)
         {
             return "value";
